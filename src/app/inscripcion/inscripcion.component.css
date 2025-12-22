@@ -1,0 +1,108 @@
+/* FORMULARIO */
+.form-wrapper {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #d9a441;
+  border-radius: 12px;
+}
+
+.form-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: white;
+  margin-top: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+select {
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 2px solid #ff4d4d;
+}
+
+.error {
+  color: #ffdddd;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #1e4db7;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #9bb0e8;
+  cursor: not-allowed;
+}
+
+/* CARD DE ÉXITO */
+.success-card {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.success-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 15px;
+  background: #4caf50;
+  color: white;
+  border-radius: 50%;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-card h2 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.success-card p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.success-card button {
+  width: auto;
+  padding: 10px 25px;
+  background: #1e4db7;
+  color: white;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}

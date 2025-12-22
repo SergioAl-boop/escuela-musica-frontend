@@ -1,0 +1,139 @@
+<!-- FORMULARIO -->
+@if (!registroExitoso) {
+  <div class="form-wrapper">
+    <h2 class="form-title">Inscripción al curso</h2>
+
+    <form #form="ngForm" (ngSubmit)="enviar()">
+
+      <!-- Instrumento -->
+      <label>Instrumento que deseas aprender</label>
+      <select
+        name="instrumento"
+        [(ngModel)]="formData.instrumento"
+        required
+        #instrumento="ngModel"
+      >
+        <option value="" disabled selected>
+          Selecciona un instrumento
+        </option>
+          <option value="Flauta">Flauta</option>
+          <option value="Piccolo">Piccolo</option>
+          <option value="Oboe">Oboe</option>
+          <option value="Clarinete">Clarinete</option>
+          <option value="Clarinete Bajo">Clarinete Bajo</option>
+          <option value="Clarinete Contrabajo">Clarinete Contrabajo</option>
+          <option value="Fagot">Fagot</option>
+          <option value="Saxofón Soprano">Saxofón Soprano</option>
+          <option value="Saxofón Alto">Saxofón Alto</option>
+          <option value="Saxofón Tenor">Saxofón Tenor</option>
+          <option value="Saxofón Barítono">Saxofón Barítono</option>
+          <option value="Trompeta">Trompeta</option>
+          <option value="Corneta">Corneta</option>
+          <option value="Fliscorno">Fliscorno</option>
+          <option value="Trompa">Trompa</option>
+          <option value="Trombón Tenor">Trombón Tenor</option>
+          <option value="Trombón Bajo">Trombón Bajo</option>
+          <option value="Barítono">Barítono</option>
+          <option value="Eufonio">Eufonio</option>
+          <option value="Tuba">Tuba</option>
+          <option value="Sousafón">Sousafón</option>
+          <option value="Caja">Caja</option>
+          <option value="Bombo">Bombo</option>
+          <option value="Platillos">Platillos</option>
+          <option value="Timbales">Timbales</option>
+          <option value="Xilófono">Xilófono</option>
+          <option value="Marimba">Marimba</option>
+          <option value="Vibráfono">Vibráfono</option>
+          <option value="Campanas Tubulares">Campanas Tubulares</option>
+          <option value="Triángulo">Triángulo</option>
+          <option value="Pandereta">Pandereta</option>
+          <option value="Claves">Claves</option>
+      </select>
+
+      @if (instrumento.invalid && instrumento.touched) {
+        <small class="error">Debes seleccionar un instrumento</small>
+      }
+
+      <!-- Nombre -->
+      <label>Nombre</label>
+      <input
+        type="text"
+        name="nombre"
+        [(ngModel)]="formData.nombre"
+        required
+        minlength="3"
+        #nombre="ngModel"
+        placeholder="Escribe tu nombre completo"
+      />
+
+      @if (nombre.invalid && nombre.touched) {
+        <small class="error">
+          El nombre es obligatorio (mínimo 3 letras)
+        </small>
+      }
+
+      <!-- Correo -->
+      <label>Correo electrónico</label>
+      <input
+        type="email"
+        name="correo"
+        [(ngModel)]="formData.correo"
+        required
+        email
+        #correo="ngModel"
+        placeholder="Escribe tu correo electrónico"
+      />
+
+      @if (correo.invalid && correo.touched) {
+        <small class="error">Ingresa un correo válido</small>
+      }
+
+      <!-- Teléfono -->
+      <label>Teléfono</label>
+      <input
+        type="tel"
+        name="telefono"
+        [(ngModel)]="formData.telefono"
+        required
+        pattern="^[0-9]{10}$"
+        #telefono="ngModel"
+        placeholder="Escribe tu teléfono"
+      />
+
+      @if (telefono.invalid && telefono.touched) {
+        <small class="error">
+          El teléfono debe tener 10 dígitos
+        </small>
+      }
+
+      <button type="submit" [disabled]="form.invalid">
+        Registrarse
+      </button>
+    </form>
+  </div>
+}
+
+<!-- CARD DE ÉXITO -->
+@if (registroExitoso) {
+  <div class="success-card">
+    <div class="success-icon">✔</div>
+
+    <h2>¡Registro exitoso!</h2>
+
+    <p>
+      Tu inscripción fue registrada correctamente.<br>
+      Nos pondremos en contacto contigo muy pronto.
+    </p>
+
+    <button (click)="registroExitoso = false">
+      OK
+    </button>
+  </div>
+}
+
+
+
+
+
+
+

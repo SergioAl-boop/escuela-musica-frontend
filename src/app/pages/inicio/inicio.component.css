@@ -1,0 +1,41 @@
+.social-block {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.social-text {
+  font-size: 11px;
+  margin-bottom: 6px;
+  color: #2e2e2e;
+}
+
+.social-text span {
+  font-weight: 600;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-icons a {
+  width: 24px;              /* tamaño del círculo */
+  height: 24px;
+  border-radius: 50%;
+  background: #1f5f4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.social-icons img {
+  width: 5px;              /* tamaño real del icono */
+  height: 5px;
+  object-fit: contain;
+}

@@ -1,0 +1,57 @@
+.section {
+  max-width: 900px;
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form input {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.form button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #1e4db7;
+  color: white;
+  cursor: pointer;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla th,
+.tabla td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.actions button {
+  margin-right: 5px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.actions .danger {
+  background: #d32f2f;
+  color: white;
+}

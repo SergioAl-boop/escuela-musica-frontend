@@ -1,0 +1,29 @@
+.lista-cursos {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-cursos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+/* BOTÓN */
+.lista-cursos button {
+  padding: 12px 25px;
+  font-size: 18px;
+  background-color: #1976d2; /* azul */
+  color: white;
+  border: none;
+  border-radius: 20px; /* semiredondeado */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lista-cursos button:hover {
+  background-color: #0d47a1;
+  transform: scale(1.05);
+}

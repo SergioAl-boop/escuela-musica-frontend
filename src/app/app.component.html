@@ -21,7 +21,12 @@
   <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
   <a routerLink="/cursos" routerLinkActive="active">Escuela de iniciacion Musical Santa Cecilia</a>
   <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
-  <a routerLink="/armoniajoventudycomunidad" routerLinkActive="active">Asistencia Social</a>
+  @if (auth.esAdmin()) {
+    <a routerLink="/armoniajoventudycomunidad">Asistencia Social</a>
+    <button (click)="logout()">Cerrar sesión</button>
+  } @else {
+    <button (click)="loginAdmin()">Admin</button>
+  }
 </nav>
 
 <div class="main-bg">

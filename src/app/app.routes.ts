@@ -5,6 +5,8 @@ import { CursosComponent } from './pages/cursos/cursos.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { InscripcionComponent } from './inscripcion/inscripcion.component';
 import { ArmoniaComponent } from './pages/armonia/armonia.component';
+import { adminGuard } from './guards/admin.guard';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -12,6 +14,6 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'armoniajoventudycomunidad', component: ArmoniaComponent },
+  { path: 'armoniajoventudycomunidad', component: ArmoniaComponent,canActivate: [adminGuard]},
   { path: 'inscripcion/:curso', component: InscripcionComponent },
 ];

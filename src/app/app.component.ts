@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,13 @@ import { filter } from 'rxjs';
 export class AppComponent {
 
  titulo = 'Armonia Juventud y Comunidad A.C';
+ isAdmin = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public auth: AuthService
+  ) {
+
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -31,4 +37,14 @@ export class AppComponent {
       });
   }
 
+  loginAdmin() {
+    this.auth.setAdmin(true);
+    alert('Sesión de administrador iniciada');
+  }
+
+  logout() {
+    this.auth.logout();
+    alert('Sesión cerrada');
+    this.router.navigate(['/inicio']);
+  }
 }

@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private isAdmin = false;
+  private readonly TOKEN_KEY = 'token';
+  private readonly ROLE_KEY = 'role';
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
-    return this.http.post<any>('http://localhost:3000/admin/login', {
-      username,
-      password
-    });
+    return this.http.post<{ token: string, role: string }>(
+      'http://localhost:3000/auth/login',
+      { email: username, password } // cambiar a 'email' si tu backend espera email
+    ).pipe(
+      tap(res => {
+        localStorage.setItem(this.TOKEN_KEY, res.token);
+        localStorage.setItem(this.ROLE_KEY, res.role);
+        console.log('Inicio de sesión. Rol:', res.role);
+      })
+    );
   }
 
-
-   esAdmin(): boolean {
-    return this.isAdmin;
+  getRole(): string | null {
+    return localStorage.getItem(this.ROLE_KEY);
   }
 
-  setAdmin(value: boolean) {
-    this.isAdmin = value;
+  getToken(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  getAdmin() {
-    return this.isAdmin;
+  isAuthenticated(): boolean {
+    return !!this.getToken();
   }
 
   logout() {
-    this.isAdmin = false;
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.ROLE_KEY);
   }
-
-
 }

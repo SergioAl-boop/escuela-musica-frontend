@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
+import {
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+  Router,
+  NavigationEnd
+} from '@angular/router';
 import { filter } from 'rxjs';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../app/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +22,14 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
 
- titulo = 'Armonia Juventud y Comunidad A.C';
- isAdmin = false;
+  titulo = 'Armonia Juventud y Comunidad A.C';
 
   constructor(
-    private router: Router,
+    public router: Router,
     public auth: AuthService
   ) {
 
+    // Cambiar título según ruta
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -37,14 +43,25 @@ export class AppComponent {
       });
   }
 
-  loginAdmin() {
-    this.auth.setAdmin(true);
-    alert('Sesión de administrador iniciada');
+  /**
+   * Oculta header/nav/footer en la página de login
+   */
+  isLoginPage(): boolean {
+    return this.router.url === '/login';
   }
 
+  /**
+   * Redirige al login
+   */
+  loginAdmin() {
+    this.router.navigate(['/login']);
+  }
+
+  /**
+   * Cierra sesión JWT
+   */
   logout() {
     this.auth.logout();
-    alert('Sesión cerrada');
-    this.router.navigate(['/inicio']);
+    this.router.navigate(['/login']);
   }
 }

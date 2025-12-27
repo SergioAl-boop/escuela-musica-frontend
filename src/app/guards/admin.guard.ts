@@ -7,11 +7,13 @@ export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  if (auth.esAdmin()) {
+  // ✅ JWT presente = usuario autenticado
+  if (auth.isAuthenticated()) {
     return true;
   }
 
-  router.navigate(['/inicio']);
+  // ❌ No hay token
   alert('Acceso solo para administradores');
+  router.navigate(['/login']);
   return false;
 };

@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import { filter } from 'rxjs';
 import { AuthService } from '../app/services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,11 @@ import { AuthService } from '../app/services/auth.service';
   imports: [
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    CommonModule
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] // corregido de styleUrl
 })
 export class AppComponent {
 
@@ -33,25 +35,26 @@ export class AppComponent {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-
         if (event.url.includes('/cursos')) {
           this.titulo = 'Escuela de Iniciación Musical Santa Cecilia';
         } else {
           this.titulo = 'Armonia Juventud y Comunidad A.C';
         }
-
       });
   }
 
   /**
-   * Oculta header/nav/footer en la página de login
+   * Oculta header/nav/footer en páginas de autenticación
    */
-  isLoginPage(): boolean {
-    return this.router.url === '/login';
+  isAuthPage(): boolean {
+    const url = this.router.url;
+    return url.includes('/login') 
+        || url.includes('/register-admins') 
+        || url.includes('/register-users');
   }
 
   /**
-   * Redirige al login
+   * Redirige a login
    */
   loginAdmin() {
     this.router.navigate(['/login']);

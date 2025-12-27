@@ -1,0 +1,31 @@
+/* Igual que antes */
+.login-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.login-card input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.login-card button {
+  width: 100%;
+  padding: 0.5rem;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.login-card button:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+}

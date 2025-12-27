@@ -1,107 +1,95 @@
-@if (!isLoginPage()) {
+<!-- Header y nav solo si NO estamos en páginas de auth -->
+<ng-container *ngIf="!isAuthPage()">
+  <header class="header">
+    <div class="header-content">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqkwdOM3S1bjPe6xMZBajMawvxVzkGvrl6w&s"
+        alt="armoniajoventudycomunidad"
+        class="logo"
+      />
 
-<header class="header">
-  <div class="header-content">
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqkwdOM3S1bjPe6xMZBajMawvxVzkGvrl6w&s"
-      alt="armoniajoventudycomunidad"
-      class="logo"
-    />
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tS_aRZGcHYs0cTdRjkwW6lrzVr4ljBTE7g&s"
+        alt="Logo Escuela Santa Cecilia"
+        class="logo"
+      />
 
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tS_aRZGcHYs0cTdRjkwW6lrzVr4ljBTE7g&s"
-      alt="Logo Escuela Santa Cecilia"
-      class="logo"
-    />
-
-    <div class="header-text">
-      <h1>{{ titulo }}</h1>
-      <p>Formando músicos desde la infancia</p>
+      <div class="header-text">
+        <h1>{{ titulo }}</h1>
+        <p>Formando músicos desde la infancia</p>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<nav class="nav">
-  <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-    Inicio
-  </a>
-  <a routerLink="/nosotros" routerLinkActive="active">
-    Nosotros
-  </a>
-  <a routerLink="/cursos" routerLinkActive="active">
-    Escuela de Iniciación Musical Santa Cecilia
-  </a>
-  <a routerLink="/contacto" routerLinkActive="active">
-    Contacto
-  </a>
-
-  @if (auth.isAuthenticated()) {
-    <a routerLink="/armoniajoventudycomunidad">
-      Asistencia Social
+  <nav class="nav">
+    <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Inicio
     </a>
-    <button (click)="logout()">Cerrar sesión</button>
-  } @else {
-    <button (click)="loginAdmin()">Admin</button>
-  }
-</nav>
+    <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
+    <a routerLink="/cursos" routerLinkActive="active">Escuela de Iniciación Musical Santa Cecilia</a>
+    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
 
-}
+    <ng-container *ngIf="auth.isAuthenticated(); else showLoginButton">
+      <a routerLink="/armoniajoventudycomunidad">Asistencia Social</a>
+      <button (click)="logout()">Cerrar sesión</button>
+    </ng-container>
+    <ng-template #showLoginButton>
+      <button (click)="loginAdmin()">Admin</button>
+    </ng-template>
+  </nav>
+</ng-container>
 
+<!-- Contenido principal -->
 <div class="main-bg">
   <router-outlet></router-outlet>
 </div>
 
-@if (!isLoginPage()) {
+<!-- Footer y botones flotantes solo si NO estamos en páginas de auth -->
+<ng-container *ngIf="!isAuthPage()">
+  <a
+    href="https://www.google.com/maps?q=C.+Allende+516,+71317+Vicente+Guerrero,+Oax"
+    target="_blank"
+    class="maps-float-btn"
+    aria-label="Abrir ubicación en Google Maps"
+  >
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn5uDUFPgf7p8SojaD68ZbRm5bGqrR94Ps-A&s"
+      alt="Google Maps"
+    />
+  </a>
 
-<a
-  href="https://www.google.com/maps?q=C.+Allende+516,+71317+Vicente+Guerrero,+Oax"
-  target="_blank"
-  class="maps-float-btn"
-  aria-label="Abrir ubicación en Google Maps"
->
-  <img
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn5uDUFPgf7p8SojaD68ZbRm5bGqrR94Ps-A&s"
-    alt="Google Maps"
-  />
-</a>
+  <a
+    href="https://wa.me/529513948106"
+    target="_blank"
+    class="float-btn whatsapp"
+    aria-label="Enviar mensaje por WhatsApp"
+  >
+    <img
+      src="https://img.freepik.com/vector-premium/icono-redondo-aplicacion-whatsapp-mensajero-popular-logotipo-redes-sociales_277909-873.jpg"
+      alt="WhatsApp"
+    />
+  </a>
 
-<a
-  href="https://wa.me/529513948106"
-  target="_blank"
-  class="float-btn whatsapp"
-  aria-label="Enviar mensaje por WhatsApp"
->
-  <img
-    src="https://img.freepik.com/vector-premium/icono-redondo-aplicacion-whatsapp-mensajero-popular-logotipo-redes-sociales_277909-873.jpg"
-    alt="WhatsApp"
-  />
-</a>
+  <footer class="footer">
+    <p>© 2025 Escuela de Iniciación Musical Santa Cecilia</p>
+    <div class="social-fixed">
+      <p class="social-text">
+        <span>Síguenos en nuestras redes sociales oficiales:</span>
+      </p>
 
-<footer class="footer">
-  <p>© 2025 Escuela de Iniciación Musical Santa Cecilia</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1ABrLgnzYx/" target="_blank">
+          <img src="assets/facebook.svg" alt="Facebook" />
+        </a>
 
-  <div class="social-fixed">
-    <p class="social-text">
-      <span>Síguenos en nuestras redes sociales oficiales:</span>
-    </p>
+        <a href="https://www.instagram.com/eim_santacecilia" target="_blank">
+          <img src="assets/instagram.svg" alt="Instagram" />
+        </a>
 
-    <div class="social-icons">
-      <a href="https://www.facebook.com/share/1ABrLgnzYx/" target="_blank">
-        <img src="assets/facebook.svg" alt="Facebook" />
-      </a>
-
-      <a href="https://www.instagram.com/eim_santacecilia" target="_blank">
-        <img src="assets/instagram.svg" alt="Instagram" />
-      </a>
-
-      <a
-        href="https://www.facebook.com/Amonia.Juventud.y.Comunidad.AC/?locale=es_LA"
-        target="_blank"
-      >
-        <img src="assets/facebook.svg" alt="Facebook" />
-      </a>
+        <a href="https://www.facebook.com/Amonia.Juventud.y.Comunidad.AC/?locale=es_LA" target="_blank">
+          <img src="assets/facebook.svg" alt="Facebook" />
+        </a>
+      </div>
     </div>
-  </div>
-</footer>
-
-}
+  </footer>
+</ng-container>

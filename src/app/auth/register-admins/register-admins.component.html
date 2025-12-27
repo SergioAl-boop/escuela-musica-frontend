@@ -1,0 +1,23 @@
+<div class="login-card">
+  <h2>Registrar Administradores</h2>
+
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <input
+      type="text"
+      name="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+      required
+    />
+
+    <input
+      type="password"
+      name="password"
+      placeholder="Contraseña"
+      [(ngModel)]="password"
+      required
+    />
+
+    <button type="submit" [disabled]="registerForm.invalid">Registrar</button>
+  </form>
+</div>

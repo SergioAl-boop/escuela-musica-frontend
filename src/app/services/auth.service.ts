@@ -39,4 +39,12 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.ROLE_KEY);
   }
+  registerAdmins(email: string, password: string) {
+  return this.http.post('http://localhost:3000/auth/register-admins', { email, password });
+}
+
+registerUsers(email: string, password: string) {
+  return this.http.post('http://localhost:3000/auth/register-users', { email, password });
+}
+
 }

@@ -7,6 +7,8 @@ import { InscripcionComponent } from './inscripcion/inscripcion.component';
 import { ArmoniaComponent } from './pages/armonia/armonia.component';
 import { LoginComponent } from './auth/login/login.component';
 import { adminGuard } from './guards/admin.guard';
+import { RegisterAdminsComponent } from './auth/register-admins/register-admins.component';
+import { RegisterUsersComponent } from './auth/register-users/register-users.component';
 
 
 export const routes: Routes = [
@@ -18,4 +20,7 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'armoniajoventudycomunidad', component: ArmoniaComponent,canActivate: [adminGuard]},
   { path: 'inscripcion/:curso', component: InscripcionComponent },
+  { path: 'register-admins', component: RegisterAdminsComponent },
+{ path: 'register-users', component: RegisterUsersComponent },
+
 ];

@@ -1,23 +1,44 @@
-<div class="login-card">
-  <h2>Registrar Usuarios</h2>
+<div class="auth-container">
+  <div class="auth-card">
 
-  <form (ngSubmit)="register()" #registerForm="ngForm">
-    <input
-      type="text"
-      name="email"
-      placeholder="Email"
-      [(ngModel)]="email"
-      required
-    />
+ <img
+        src="assets/logon.png"
+        alt="armoniajoventudycomunidad"
+        class="logo"
+      />
 
-    <input
-      type="password"
-      name="password"
-      placeholder="Contraseña"
-      [(ngModel)]="password"
-      required
-    />
 
-    <button type="submit" [disabled]="registerForm.invalid">Registrar</button>
-  </form>
+    <h2>Registro de usuario</h2>
+
+    <form (ngSubmit)="register()" #f="ngForm">
+
+      <label>Correo electrónico</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Escribe tu correo electrónico"
+        required
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Escribe tu contraseña"
+        required
+      />
+
+      <button type="submit" [disabled]="f.invalid">
+        Registrarse
+      </button>
+    </form>
+
+    <p class="link-text">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login">Inicia sesión</a>
+    </p>
+
+  </div>
 </div>

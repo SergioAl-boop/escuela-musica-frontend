@@ -13,7 +13,7 @@ export class AuthService {
   login(username: string, password: string) {
     return this.http.post<{ token: string, role: string }>(
       'http://localhost:3000/auth/login',
-      { email: username, password } // cambiar a 'email' si tu backend espera email
+      { email: username, password } 
     ).pipe(
       tap(res => {
         localStorage.setItem(this.TOKEN_KEY, res.token);

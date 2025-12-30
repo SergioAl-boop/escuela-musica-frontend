@@ -1,25 +1,43 @@
-<div class="login-card">
-  <h2>Iniciar sesión</h2>
+<div class="auth-container">
+  <div class="auth-card">
 
-  <form (ngSubmit)="login()" #loginForm="ngForm">
-    <input
-      type="text"
-      name="email"
-      placeholder="Email"
-      [(ngModel)]="email"
-      required
-    />
+  <img
+        src="assets/logon.png"
+        alt="armoniajoventudycomunidad"
+        class="logo"
+      />
 
-    <input
-      type="password"
-      name="password"
-      placeholder="Contraseña"
-      [(ngModel)]="password"
-      required
-    />
+    <h2>Iniciar sesión</h2>
 
-    <button type="submit" [disabled]="loginForm.invalid">
-      Entrar
-    </button>
-  </form>
+    <form (ngSubmit)="login()" #f="ngForm">
+
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Escribe tu correo electrónico"
+        required
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Escribe tu contraseña"
+        required
+      />
+
+      <button type="submit" [disabled]="f.invalid">
+        Entrar
+      </button>
+    </form>
+
+    <p class="link-text">
+      ¿No tienes cuenta?
+      <a routerLink="/register-users">Regístrate</a>
+    </p>
+
+  </div>
 </div>

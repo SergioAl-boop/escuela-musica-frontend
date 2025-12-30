@@ -6,16 +6,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   standalone: true,
   imports: [FormsModule],
-  template: `
-  <div class="section">
-    <h2>Login Administrador</h2>
-
-    <input [(ngModel)]="usuario" placeholder="Usuario">
-    <input [(ngModel)]="password" type="password" placeholder="Contraseña">
-
-    
-  </div>
-  `
+  template: ``
 })
 export class LoginAdminComponent {
 

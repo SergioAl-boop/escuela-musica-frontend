@@ -1,0 +1,105 @@
+/* Fondo general */
+.admin-wrapper {
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Card principal */
+.admin-card {
+  width: 95%;
+  max-width: 1100px;
+  background: rgba(224, 113, 8, 0.92);
+  border-radius: 20px;
+  padding: 25px 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+/* Título */
+.admin-card h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Tabla */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Encabezados */
+.admin-table thead {
+  background: #2c3e94;
+  color: white;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 10px;
+  text-align: center;
+}
+
+/* Filas */
+.admin-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+/* Estados */
+.estado {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.estado.pendiente {
+  background: #ffeaa7;
+  color: #b7791f;
+}
+
+.estado.aprobado {
+  background: #c6f6d5;
+  color: #2f855a;
+}
+
+.estado.rechazado {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+/* Acciones */
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn.ok {
+  background: #38a169;
+  color: white;
+}
+
+.btn.cancel {
+  background: #e53e3e;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

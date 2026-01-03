@@ -1,13 +1,15 @@
 <div class="auth-container">
   <div class="auth-card">
 
-  <img
-        src="assets/logon.png"
-        alt="armoniajoventudycomunidad"
-        class="logo"
-      />
+    <img src="assets/logon.png" alt="logo" class="logo" />
 
     <h2>Iniciar sesión</h2>
+    @if (errorMsg) {
+  <div class="error-card">
+    {{ errorMsg }}
+  </div>
+}
+
 
     <form (ngSubmit)="login()" #f="ngForm">
 
@@ -25,13 +27,18 @@
         type="password"
         name="password"
         [(ngModel)]="password"
-        placeholder="Escribe tu contraseña"
+        placeholder="Escribe ti contraseña"
         required
       />
 
-      <button type="submit" [disabled]="f.invalid">
-        Entrar
-      </button>
+      <button type="submit" [disabled]="f.invalid || loading">
+  @if (loading) {
+    Verificando...
+  } @else {
+    Entrar
+  }
+</button>
+
     </form>
 
     <p class="link-text">
@@ -41,3 +48,4 @@
 
   </div>
 </div>
+

@@ -20,18 +20,17 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] // corregido de styleUrl
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
   titulo = 'Armonia Juventud y Comunidad A.C';
+  confirmLogout = false;
 
   constructor(
     public router: Router,
     public auth: AuthService
   ) {
-
-    // Cambiar título según ruta
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -43,28 +42,32 @@ export class AppComponent {
       });
   }
 
-  /**
-   * Oculta header/nav/footer en páginas de autenticación
-   */
   isAuthPage(): boolean {
     const url = this.router.url;
-    return url.includes('/login') 
-        || url.includes('/register-admins') 
+    return url.includes('/login')
+        || url.includes('/register-admins')
         || url.includes('/register-users');
   }
 
-  /**
-   * Redirige a login
-   */
   loginAdmin() {
     this.router.navigate(['/login']);
   }
 
-  /**
-   * Cierra sesión JWT
-   */
   logout() {
+  this.auth.logout();
+  this.router.navigate(['/login'], {
+    queryParams: { logout: 'true' }
+  });
+}
+
+
+  confirmLogoutYes() {
     this.auth.logout();
+    this.confirmLogout = false;
     this.router.navigate(['/login']);
+  }
+
+  confirmLogoutNo() {
+    this.confirmLogout = false;
   }
 }

@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  standalone: true, // 👈 CLAVE
+  standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   email = '';
   password = '';
+
+  errorMsg = '';
+  loading = false;
 
   constructor(
     private auth: AuthService,
@@ -21,11 +25,13 @@ export class LoginComponent {
   ) {}
 
   login() {
+    this.errorMsg = '';
+    this.loading = true;
+
     this.auth.login(this.email, this.password).subscribe({
       next: (res) => {
-        alert(`Inicio de sesión exitoso. Rol: ${res.role}`);
+        this.loading = false;
 
-        // Redirección por rol
         if (res.role === 'admin') {
           this.router.navigate(['/armoniajoventudycomunidad']);
         } else {
@@ -33,8 +39,10 @@ export class LoginComponent {
         }
       },
       error: () => {
-        alert('Credenciales incorrectas');
+        this.loading = false;
+        this.errorMsg = 'Correo o contraseña incorrectos';
       }
     });
   }
 }
+  

@@ -1,16 +1,17 @@
-<!-- Header y nav solo si NO estamos en páginas de auth -->
-<ng-container *ngIf="!isAuthPage()">
+<!-- Header y Nav (solo si NO es login o registro) -->
+@if (!isAuthPage()) {
+
   <header class="header">
     <div class="header-content">
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqkwdOM3S1bjPe6xMZBajMawvxVzkGvrl6w&s"
-        alt="armoniajoventudycomunidad"
+        alt="Armonia Juventud y Comunidad"
         class="logo"
       />
 
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tS_aRZGcHYs0cTdRjkwW6lrzVr4ljBTE7g&s"
-        alt="Logo Escuela Santa Cecilia"
+        alt="Escuela Santa Cecilia"
         class="logo"
       />
 
@@ -26,31 +27,39 @@
       Inicio
     </a>
     <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
-    <a routerLink="/cursos" routerLinkActive="active">Escuela de Iniciación Musical Santa Cecilia</a>
+    <a routerLink="/cursos" routerLinkActive="active">
+      Escuela de Iniciación Musical Santa Cecilia
+    </a>
     <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
 
-    <ng-container *ngIf="auth.isAuthenticated(); else showLoginButton">
-      <a routerLink="/armoniajoventudycomunidad">Asistencia Social</a>
+    @if (auth.isAuthenticated()) {
+
+      @if (auth.getRole() === 'admin') {
+        <a routerLink="/armoniajoventudycomunidad">
+          Asistencia Social
+        </a>
+      }
+
       <button (click)="logout()">Cerrar sesión</button>
-    </ng-container>
-    <ng-template #showLoginButton>
-      <button (click)="loginAdmin()">Iniciar sesion</button>
-    </ng-template>
+
+    } @else {
+      <button (click)="loginAdmin()">Iniciar sesión</button>
+    }
   </nav>
-</ng-container>
+}
 
 <!-- Contenido principal -->
 <div class="main-bg">
   <router-outlet></router-outlet>
 </div>
 
-<!-- Footer y botones flotantes solo si NO estamos en páginas de auth -->
-<ng-container *ngIf="!isAuthPage()">
+<!-- Footer (solo si NO es login o registro) -->
+@if (!isAuthPage()) {
+
   <a
     href="https://www.google.com/maps?q=C.+Allende+516,+71317+Vicente+Guerrero,+Oax"
     target="_blank"
     class="maps-float-btn"
-    aria-label="Abrir ubicación en Google Maps"
   >
     <img
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn5uDUFPgf7p8SojaD68ZbRm5bGqrR94Ps-A&s"
@@ -62,7 +71,6 @@
     href="https://wa.me/529513948106"
     target="_blank"
     class="float-btn whatsapp"
-    aria-label="Enviar mensaje por WhatsApp"
   >
     <img
       src="https://img.freepik.com/vector-premium/icono-redondo-aplicacion-whatsapp-mensajero-popular-logotipo-redes-sociales_277909-873.jpg"
@@ -72,6 +80,7 @@
 
   <footer class="footer">
     <p>© 2025 Escuela de Iniciación Musical Santa Cecilia</p>
+
     <div class="social-fixed">
       <p class="social-text">
         <span>Síguenos en nuestras redes sociales oficiales:</span>
@@ -92,4 +101,18 @@
       </div>
     </div>
   </footer>
-</ng-container>
+}
+
+@if (confirmLogout) {
+  <div class="overlay">
+    <div class="logout-card">
+      <h3>¿Cerrar sesión?</h3>
+      <p>Tu sesión actual se cerrará</p>
+
+      <div class="buttons">
+        <button class="cancel" (click)="confirmLogoutNo()">Cancelar</button>
+        <button class="confirm" (click)="confirmLogoutYes()">Salir</button>
+      </div>
+    </div>
+  </div>
+}

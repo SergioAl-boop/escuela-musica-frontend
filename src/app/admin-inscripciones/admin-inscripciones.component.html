@@ -1,0 +1,42 @@
+<section class="admin-wrapper">
+  <div class="admin-card">
+    <h2>📋 Inscripciones Registradas</h2>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Curso</th>
+          <th>Instrumento</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (inscripcion of inscripciones; track inscripcion.id) {
+          <tr>
+            <td>{{ inscripcion.nombre }}</td>
+            <td>{{ inscripcion.correo }}</td>
+            <td>{{ inscripcion.curso }}</td>
+            <td>{{ inscripcion.instrumento }}</td>
+
+            <td>
+              <span class="estado" [class.pendiente]="inscripcion.estado === 'PENDIENTE'"
+                                   [class.aprobado]="inscripcion.estado === 'APROBADO'"
+                                   [class.rechazado]="inscripcion.estado === 'RECHAZADO'">
+                {{ inscripcion.estado }}
+              </span>
+            </td>
+
+            <td class="acciones">
+              <button class="btn ok">✔</button>
+              <button class="btn cancel">✖</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -5,7 +5,6 @@
   align-items: center;
 }
 
-
 .auth-card {
   background: rgb(245, 141, 5);
   width: 340px;
@@ -30,7 +29,7 @@
   width: 100%;
   padding: 12px;
   margin-top: 5px;
-  border-radius: 20px;
+  border-radius: 15px;
   border: none;
   outline: none;
   background: #f2f2f2;
@@ -67,5 +66,72 @@
   display: block;
   margin: 0 auto 15px auto;
   width: 250px;
-  height: auto;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* CARD MENSAJE */
+.message-card {
+  background: green;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  text-align: center;
+  min-width: 300px;
+  animation: popIn 0.4s ease;
+}
+
+.message-card.success {
+  border-top: 6px solid #28a745;
+}
+
+.message-card.error {
+  border-top: 6px solid #dc3545;
+}
+
+.message-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ANIMACIÓN */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.error-card {
+  background: #ffe5e5;
+  color: #b10000;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }

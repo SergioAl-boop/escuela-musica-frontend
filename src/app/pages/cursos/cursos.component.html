@@ -1,12 +1,23 @@
 <section class="section">
-  <h2>Juntos Tejiendo Armonia, Joventud y Comunidad</h2>
+  <h2>Juntos Tejiendo Armonía, Juventud y Comunidad</h2>
 
   <ul class="lista-cursos">
     <li>
-       Musica
-      <button (click)="inscribirse(' Escuela de musica')">
-        Inscribirse
-      </button>
+      Música
+
+      <!-- USUARIO -->
+      @if (auth.isAuthenticated() && auth.getRole() === 'user') {
+        <button (click)="inscribirse('Escuela de música')">
+          Inscribirse
+        </button>
+      }
+
+      <!-- ADMIN -->
+      @if (auth.isAuthenticated() && auth.getRole() === 'admin') {
+        <button class="admin-btn" (click)="verInscripciones()">
+          Ver inscripciones
+        </button>
+      }
     </li>
   </ul>
 </section>

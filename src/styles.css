@@ -179,4 +179,16 @@
     object-fit: contain;
   }
 
-  
+
+
+  .colored-toast.swal2-icon-success {
+  background-color: #38e076 !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #dc2626 !important;
+}
+
+.colored-toast.swal2-icon-info {
+  background-color: #38e076 !important;
+}

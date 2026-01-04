@@ -182,3 +182,55 @@ body {
   background: #ff6b6b;
   color: white;
 }
+
+
+/* 🔴 Cerrar sesión */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: #dc2626;
+  color: white;
+
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.btn-logout:hover {
+  background: #b91c1c;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
+}
+
+/* 🔵 Iniciar sesión */
+.btn-login {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.btn-login:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+}
+

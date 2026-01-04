@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Toast } from '../../shared/toast';
+
 
 @Component({
   selector: 'app-login',
@@ -30,19 +32,30 @@ export class LoginComponent {
 
     this.auth.login(this.email, this.password).subscribe({
       next: (res) => {
-        this.loading = false;
+  this.loading = false;
 
-        if (res.role === 'admin') {
-          this.router.navigate(['/armoniajoventudycomunidad']);
-        } else {
-          this.router.navigate(['/inicio']);
-        }
-      },
+  Toast.fire({
+    icon: 'success',
+    title: 'Sesión iniciada correctamente'
+  });
+
+  if (res.role === 'admin') {
+    this.router.navigate(['/armoniajoventudycomunidad']);
+  } else {
+    this.router.navigate(['/inicio']);
+  }
+},
       error: () => {
-        this.loading = false;
-        this.errorMsg = 'Correo o contraseña incorrectos';
-      }
+  this.loading = false;
+  this.errorMsg = 'Correo o contraseña incorrectos';
+
+  Toast.fire({
+    icon: 'error',
+    title: 'Credenciales incorrectas'
+  });
+}
+
     });
   }
 }
-  
+

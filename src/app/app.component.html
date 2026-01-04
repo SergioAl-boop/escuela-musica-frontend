@@ -40,10 +40,16 @@
         </a>
       }
 
-      <button (click)="logout()">Cerrar sesión</button>
+       <button class="btn-logout" (click)="logout()">
+    <span class="material-icons logout-icon">Cerrar Sesion</span>
+
+  </button>
 
     } @else {
-      <button (click)="loginAdmin()">Iniciar sesión</button>
+      <button class="btn-login" (click)="loginAdmin()">
+    <span class="material-icons login-icon">login</span>
+    <span>Iniciar sesión</span>
+  </button>
     }
   </nav>
 }
@@ -108,11 +114,6 @@
     <div class="logout-card">
       <h3>¿Cerrar sesión?</h3>
       <p>Tu sesión actual se cerrará</p>
-
-      <div class="buttons">
-        <button class="cancel" (click)="confirmLogoutNo()">Cancelar</button>
-        <button class="confirm" (click)="confirmLogoutYes()">Salir</button>
-      </div>
     </div>
   </div>
 }

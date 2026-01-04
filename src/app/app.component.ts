@@ -9,6 +9,8 @@ import {
 import { filter } from 'rxjs';
 import { AuthService } from '../app/services/auth.service';
 import { CommonModule } from '@angular/common';
+import { Toast } from './shared/toast';
+
 
 @Component({
   selector: 'app-root',
@@ -55,17 +57,15 @@ export class AppComponent {
 
   logout() {
   this.auth.logout();
-  this.router.navigate(['/login'], {
-    queryParams: { logout: 'true' }
+
+  Toast.fire({
+    icon: 'info',
+    title: 'Sesión cerrada correctamente'
   });
+
+  this.router.navigate(['/login']);
 }
 
-
-  confirmLogoutYes() {
-    this.auth.logout();
-    this.confirmLogout = false;
-    this.router.navigate(['/login']);
-  }
 
   confirmLogoutNo() {
     this.confirmLogout = false;

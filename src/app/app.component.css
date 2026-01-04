@@ -186,7 +186,6 @@ body {
 
 /* 🔴 Cerrar sesión */
 .btn-logout {
-  display: flex;
   align-items: center;
   gap: 6px;
   margin-left: auto;

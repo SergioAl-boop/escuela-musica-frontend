@@ -1,11 +1,47 @@
 <section class="section contacto-section">
   <h2>Contacto</h2>
 
-  <p>📍 Dirección: C. Allende 516, 71317 Vicente Guerrero, Oax.
+  <!-- 👀 MODO VER -->
+  @if (!editando) {
+    <p>📍 Dirección: {{ direccion }}</p>
+    <p>📞 Teléfono: {{ telefono }}</p>
+    <p>📧 Email: {{ email }}</p>
+  }
 
-  </p>
-  <p>📞 Teléfono: 951-365-83-40</p>
-  <p>📧 Email: armoniajoventudycomunidad&#64;outlook.com</p>
+  <!-- ✏️ MODO EDITAR (SOLO ADMIN) -->
+  @if (editando) {
+    <label>Dirección</label>
+    <textarea
+      [(ngModel)]="direccion"
+      class="textarea-edit"
+      rows="2">
+    </textarea>
 
+    <label>Teléfono</label>
+    <input
+      type="text"
+      [(ngModel)]="telefono"
+      class="input-edit" />
 
+    <label>Email</label>
+    <input
+      type="email"
+      [(ngModel)]="email"
+      class="input-edit" />
+  }
+
+  <!-- 🔐 BOTONES SOLO ADMIN -->
+  @if (isAdmin) {
+    <div class="actions">
+      @if (!editando) {
+        <button class="btn-edit" (click)="editar()">
+          <span class="material-icons">Editar Información</span>
+        </button>
+      } @else {
+        <button class="btn-save" (click)="guardar()">
+          <span class="material-icons">Guardar Información</span>
+        </button>
+      }
+    </div>
+  }
 </section>

@@ -1,0 +1,24 @@
+.btn-edit,
+.btn-save {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.btn-edit:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+}
+
+

@@ -1,7 +1,32 @@
 <section class="section">
   <h2>Sobre Nosotros</h2>
-  <p>
-    La Escuela de Iniciación Musical Santa Cecilia ofrece educación musical de calidad,
-    con profesores especializados y un enfoque pedagógico integral.
-  </p>
+
+  <!-- 👀 MODO VER -->
+  @if (!editando) {
+    <p>{{ descripcion }}</p>
+  }
+
+  <!-- ✏️ MODO EDITAR (SOLO ADMIN) -->
+  @if (editando) {
+    <textarea
+      [(ngModel)]="descripcion"
+      class="textarea-edit"
+      rows="5">
+    </textarea>
+  }
+
+  <!-- 🔐 BOTONES SOLO ADMIN -->
+  @if (isAdmin) {
+    <div class="actions">
+      @if (!editando) {
+        <button class="btn-edit" (click)="editar()">
+          <span class="material-icons">Editar Informacion</span>
+        </button>
+      } @else {
+        <button class="btn-save" (click)="guardar()">
+          <span class="material-icons">Guardar Informacion</span>
+        </button>
+      }
+    </div>
+  }
 </section>

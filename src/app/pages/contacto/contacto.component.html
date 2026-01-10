@@ -1,14 +1,12 @@
 <section class="section contacto-section">
   <h2>Contacto</h2>
 
-  <!-- 👀 MODO VER -->
   @if (!editando) {
     <p>📍 Dirección: {{ direccion }}</p>
     <p>📞 Teléfono: {{ telefono }}</p>
     <p>📧 Email: {{ email }}</p>
   }
 
-  <!-- ✏️ MODO EDITAR (SOLO ADMIN) -->
   @if (editando) {
     <label>Dirección</label>
     <textarea
@@ -30,7 +28,6 @@
       class="input-edit" />
   }
 
-  <!-- 🔐 BOTONES SOLO ADMIN -->
   @if (isAdmin) {
     <div class="actions">
       @if (!editando) {

@@ -31,7 +31,6 @@ export const routes: Routes = [
   {
     path: 'armoniajoventudycomunidad',
     component: ArmoniaComponent,
-    canActivate: [adminGuard]
   },
   {
     path: 'admin-inscripciones',

@@ -1,1 +1,44 @@
-<h6>Sistema de area de becas </h6>
+<h2 class="titulo">
+  Asistencia Social – Armonía Juventud y Comunidad
+</h2>
+
+@if (
+  auth.getRole() === 'admin' ||
+  auth.getRole() === 'superadmin'
+) {
+  <div class="boton-container">
+
+    <button class="btn-mostrar" (click)="mostrarFotos()">
+      Mostrar fotos
+    </button>
+
+    <!-- Botón subir foto -->
+   @if (auth.getRole() === 'admin' || auth.getRole() === 'superadmin') {
+  <div class="subir-container">
+    <label class="btn-subir">
+      📸 Subir foto
+      <input
+        type="file"
+        hidden
+        accept="image/*"
+        (change)="subirFoto($event)"
+      />
+    </label>
+  </div>
+}
+  </div>
+}
+
+<div class="galeria-container">
+  @if (fotos.length === 0) {
+    <p class="mensaje">No hay fotos disponibles</p>
+  }
+
+  <div class="galeria">
+    @for (foto of fotos; track foto.id) {
+      <div class="foto-box">
+        <img [src]="foto.url" alt="foto" />
+      </div>
+    }
+  </div>
+</div>

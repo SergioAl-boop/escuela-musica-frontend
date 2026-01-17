@@ -31,26 +31,18 @@
       Escuela de Iniciación Musical Santa Cecilia
     </a>
     <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
-
     @if (auth.isAuthenticated()) {
-
-      @if (auth.getRole() === 'admin') {
-        <a routerLink="/armoniajoventudycomunidad">
-          Asistencia Social
-        </a>
-      }
+  <a routerLink="/armoniajoventudycomunidad">
+    Asistencia Social
+  </a>
+}
 
        <button class="btn-logout" (click)="logout()">
     <span class="material-icons logout-icon">Cerrar Sesion</span>
 
   </button>
 
-    } @else {
-      <button class="btn-login" (click)="loginAdmin()">
-    <span class="material-icons login-icon">login</span>
-    <span>Iniciar sesión</span>
-  </button>
-    }
+
   </nav>
 }
 

@@ -37,8 +37,69 @@
   <div class="galeria">
     @for (foto of fotos; track foto.id) {
       <div class="foto-box">
-        <img [src]="foto.url" alt="foto" />
+        <!-- Ajustes clave: width, height y lazy loading -->
+        <img
+          [src]="foto.url"
+          alt="foto"
+          width="320"
+          height="240"
+          loading="lazy"
+        />
       </div>
     }
+
   </div>
+
+
+</div>
+<br>
+<br>
+<h2 class="titulo">💖 Donaciones</h2>
+
+<div class="donacion-card">
+
+  <h2 class="donacion-title">Donación</h2>
+
+  <label>Destino de la donación</label>
+  <select
+    class="input"
+    [(ngModel)]="donacion.destino"
+    (change)="actualizarCuenta()"
+  >
+    <option value="">Selecciona una opción</option>
+    <option value="AJYC">Armonía Juventud y Comunidad</option>
+    <option value="EIMSC">Escuela Santa Cecilia</option>
+    <option value="AMBAS">Ambas</option>
+  </select>
+
+  <label>Monto</label>
+  <input
+    type="number"
+    class="input"
+    placeholder="Ej. 200"
+    [(ngModel)]="donacion.monto"
+  />
+
+  @if (cuentaVisible) {
+    <div class="cuenta-box">
+      <p class="cuenta-label">Número de cuenta</p>
+
+      <div class="cuenta-row">
+        <span class="cuenta-text">{{ cuentaMostrada }}</span>
+
+        <button class="btn-copiar" (click)="copiarCuenta()">
+          📋
+        </button>
+      </div>
+
+      @if (copiado) {
+        <p class="copiado-msg">✅ Copiado</p>
+      }
+    </div>
+  }
+
+  <button class="btn-donar" (click)="donar()">
+    Donar
+  </button>
+
 </div>

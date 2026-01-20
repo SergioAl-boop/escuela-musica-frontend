@@ -53,7 +53,7 @@
 .foto-box img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 
@@ -84,4 +84,82 @@
 .btn-subir:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+
+.donacion-card {
+  width: 320px;
+  background: #f7931e;
+  padding: 20px;
+  border-radius: 18px;
+  color: white;
+  margin: 30px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.donacion-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  height: 42px;              /* 🔑 misma altura */
+  padding: 0 14px;           /* 🔑 padding lateral */
+  border-radius: 22px;
+  border: none;
+  font-size: 14px;
+  line-height: 42px;         /* 🔑 centra texto vertical */
+  box-sizing: border-box;
+  appearance: none;          /* 🔑 quita estilos del navegador */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+.input:focus {
+  outline: none;
+}
+
+/* 👇 AQUÍ ESTABA EL PROBLEMA */
+.cuenta-box {
+  background: white;
+  border-radius: 15px;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.cuenta-label {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.cuenta-text {
+  font-weight: bold;
+  color: #222; /* 🔑 texto oscuro visible */
+  font-size: 15px;
+}
+
+.btn-donar {
+  width: 100%;
+  background: #9db7f0;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.btn-donar:hover {
+  background: #88a4e8;
 }
